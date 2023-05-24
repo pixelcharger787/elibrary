@@ -1,11 +1,24 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 export default class TransactionScreen extends Component {
+
+  constructor(props){
+    super(props)
+    this.state={
+      domState: "normal",
+      hasCameraPermissions: null,
+      scanned: false,
+      scannedData: ""
+    }
+  }
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>Transaction Screen</Text>
+        <TouchableOpacity style={styles.button}
+          onPress={() => this.getCameraPermissions("scanner")}
+
+        ><Text style={styles.buttonText}>SCAN</Text></TouchableOpacity>
       </View>
     );
   }
@@ -21,5 +34,17 @@ const styles = StyleSheet.create({
   text: {
     color: "#ffff",
     fontSize: 30
+  },
+  button: {
+    width: "43%",
+    height: 55,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F48D20",
+    borderRadius: 15
+  },
+  buttonText: {
+    fontSize: 24,
+    color: "#FFFFFF"
   }
 });
